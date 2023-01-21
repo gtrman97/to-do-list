@@ -11,11 +11,18 @@ app.use(express.json()); // req.body
 
 // Create a todo
 
-app.post("./todos", async (req, res) => {
+app.get("/", (req, res) => {
+  res.send("cool beans");
+});
+
+app.post("/todos", async (req, res) => {
   try {
-
-
-
+    const { description } = req.body;
+    const newTodo = await pool.query(
+      "INSERT INTO todo (description) VALUES($1) RETURNING *",
+      [description]
+    );
+    res.json(newTodo.rows[0]);
   } catch (error) {
     console.log(error.message);
   }
