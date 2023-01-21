@@ -1,15 +1,25 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const cors = require('cors');
-const pool = require('./db');
+const cors = require("cors");
+const pool = require("./db");
 
 // Middleware
 app.use(cors());
-app.use(express.json());
+app.use(express.json()); // req.body
 
 // Routes
 
 // Create a todo
+
+app.post("./todos", async (req, res) => {
+  try {
+
+
+
+  } catch (error) {
+    console.log(error.message);
+  }
+});
 
 // Get all todos
 
@@ -19,9 +29,6 @@ app.use(express.json());
 
 // Delete a todo
 
-
-
 app.listen(5000, () => {
-    console.log('server has started on port 5000');
-})
-
+  console.log("server has started on port 5000");
+});
