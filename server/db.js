@@ -8,3 +8,4 @@ const pool = new Pool({
     database: 'todo'
 })
 
+export default pool;
