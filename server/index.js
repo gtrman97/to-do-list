@@ -33,13 +33,25 @@ app.post("/todos", async (req, res) => {
 app.get("/todos", async (req, res) => {
   try {
     const allTodos = await pool.query("SELECT * FROM todo");
-    res.json(allTodos.rows)
+    res.json(allTodos.rows);
   } catch (error) {
     console.error(error.message);
   }
 });
 
 // Get a todo
+
+app.get("/todos/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const todo = await pool.query("SELECT * FROM todo WHERE todo_id = $1", [
+      id,
+    ]);
+    res.json(todo.rows[0]);
+  } catch (error) {
+    console.error(error.message);
+  }
+});
 
 // Update a todo
 
