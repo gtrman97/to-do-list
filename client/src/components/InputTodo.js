@@ -15,6 +15,8 @@ const InputTodo = () => {
         // converts out the todo object input into a JSON string
         body: JSON.stringify(body),
       });
+      // once response has been sent, 
+      // this will refresh and show the changes
       window.location = '/';
     } catch (error) {
       console.error(error.message);
