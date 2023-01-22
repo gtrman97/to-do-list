@@ -4,21 +4,22 @@ const InputTodo = () => {
   const [description, setDescription] = useState("");
 
   const onSubmitForm = async (e) => {
-    e.preventDefault(); // prevents it from refreshing 
+    e.preventDefault(); // prevents it from refreshing
     try {
-        const body = {description};
-        //fetch request can take some time
-        // so you need to await 
-        const response = await fetch('http://localhost:5000/todos', {
-            method: "POST", 
-            headers: {"Content-Type": "application/json" }, 
-            body: JSON.stringify(body)
-        })
-        console.log(response);
+      const body = { description };
+      //fetch request can take some time
+      // so you need to await
+      const response = await fetch("http://localhost:5000/todos", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        // converts out the todo object input into a JSON string
+        body: JSON.stringify(body),
+      });
+      console.log(body);
     } catch (error) {
-        console.error(error.message);
+      console.error(error.message);
     }
-  }
+  };
 
   return (
     <Fragment>
