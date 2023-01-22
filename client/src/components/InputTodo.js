@@ -15,7 +15,7 @@ const InputTodo = () => {
         // converts out the todo object input into a JSON string
         body: JSON.stringify(body),
       });
-      console.log(body);
+      window.location = '/';
     } catch (error) {
       console.error(error.message);
     }
